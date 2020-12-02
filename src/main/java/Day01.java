@@ -15,7 +15,7 @@ public class Day01 {
     }
 
     private static int firstTask(List<Integer> input, int target) {
-        int candidate = 0;
+        int candidate;
         for(int number : input) {
             candidate = target - number;
             if (input.contains(candidate))
@@ -42,7 +42,7 @@ public class Day01 {
         List<Integer> input = readInput(Day01.class.getClassLoader().getResourceAsStream("day_01_input.txt")).stream()
                 .map(Integer::parseInt)
                 .sorted()
-                .collect(Collectors.toList());;
+                .collect(Collectors.toList());
 
         System.out.println("First task: " + firstTask(input, 2020));
         System.out.println("Second task: " + secondTask(input, 2020));
