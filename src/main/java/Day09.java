@@ -33,21 +33,25 @@ public class Day09 {
     private static long secondTask(final ArrayList<Long> input, final long targetValue) {
         int startIndex = 0;
         int endIndex = 1;
+        long result = 0;
 
-        while(true) {
+        while(result != targetValue) {
             long currentValue = input.subList(startIndex, endIndex).stream().reduce(Long::sum).get();
 
             if(currentValue == targetValue) {
                 var sequence = input.subList(startIndex, endIndex).stream()
                         .sorted()
                         .collect(Collectors.toCollection(LinkedList::new));
-                return sequence.getFirst() + sequence.getLast();
+                result = sequence.getFirst() + sequence.getLast();
+                break;
             }
             else if (currentValue < targetValue)
                 endIndex++;
             else
                 startIndex++;
         }
+
+        return result;
     }
 
     public static void main(String[] args) {
